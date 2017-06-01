@@ -1,0 +1,22 @@
+
+
+public class Snippet {
+	static void unmarshal()
+		{
+			try
+			{
+				JAXBContext context = JAXBContext.newInstance(MyList.class);
+				Unmarshaller unmarshaller = context.createUnmarshaller();
+				
+				File file = new File("list.xml");
+				
+				MyList list;
+				list = (MyList) unmarshaller.unmarshal(file);
+				list.printElements();
+			}
+			catch (JAXBException e)
+			{
+				System.out.println(e);
+			}
+		}
+}

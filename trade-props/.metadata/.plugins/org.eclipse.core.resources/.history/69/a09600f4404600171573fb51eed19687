@@ -1,0 +1,53 @@
+package trading;
+
+import java.io.File;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+
+public class Main
+{
+	public static void main(String[] args)
+	{
+		if (args.length == 0)
+		{
+			System.out.println("No changes Made");
+		}
+		else if (args[0].equals("-m"))
+		{
+			Marshall.marshal();
+			System.out.println("Java Objects converted to XML");
+		}
+		else if (args[0].equals("-u"))
+		{
+			unmarshal();
+			System.out.println("Here you see your Java Objects");
+		}
+		else
+		{
+			System.out.println("No changes Made");		}
+	}
+	
+	
+	
+	static void unmarshal()
+	{
+		try
+		{
+			JAXBContext context = JAXBContext.newInstance(MyList.class);
+			Unmarshaller unmarshaller = context.createUnmarshaller();
+			
+			File file = new File("list.xml");
+			
+			MyList list;
+			list = (MyList) unmarshaller.unmarshal(file);
+			list.printElements();
+		}
+		catch (JAXBException e)
+		{
+			System.out.println(e);
+		}
+	}
+}

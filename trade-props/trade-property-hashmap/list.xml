@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<myList>
+    <pairs>
+        <entry>
+            <key>name</key>
+            <value>
+                <name>name</name>
+                <value>Terry</value>
+            </value>
+        </entry>
+        <entry>
+            <key>birthday</key>
+            <value>
+                <name>birthday</name>
+                <value>08/08/1997</value>
+            </value>
+        </entry>
+        <entry>
+            <key>favorite color</key>
+            <value>
+                <name>favorite color</name>
+                <value>red</value>
+            </value>
+        </entry>
+    </pairs>
+</myList>

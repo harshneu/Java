@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<myList>
+    <property>
+        <name>name</name>
+        <value>mysaaadasName</value>
+    </property>
+    <property>
+        <name>gender</name>
+        <value>gender</value>
+    </property>
+    <property>
+        <name>age</name>
+        <value>myAge</value>
+    </property>
+</myList>

@@ -1,0 +1,32 @@
+package trading;
+
+import java.util.LinkedList;
+
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+public class MyList
+{
+	@XmlElement
+	LinkedList<Pair> pairs;
+	
+	MyList()
+	{
+		pairs = new LinkedList<Pair>();
+	}
+	
+	void addElement(Pair p)
+	{
+		pairs.add(p);
+	}
+	
+	void printElements()
+	{
+		System.out.println("There are " + pairs.size() + " elements:");
+		for (Pair p : pairs)
+		{
+			p.printPair();
+		}
+	}
+}

@@ -1,0 +1,81 @@
+package trading;
+
+import java.io.File;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+
+public class Main
+{
+	public static void main(String[] args)
+	{
+		if (args.length == 0)
+		{
+			System.out.println("Run with either -m to marshal or -u to unmarshal");
+		}
+		else if (args[0].equals("-m"))
+		{
+			marshal();
+		}
+		else if (args[0].equals("-u"))
+		{
+			unmarshal();
+		}
+		else
+		{
+			System.out.println("Run with either -m to marshal or -u to unmarshal");
+		}
+	}
+	
+	static void marshal()
+	{
+		MyList list = new MyList();
+		
+		list.addElement(new Pair().setName("name").setValue("myName"));
+		list.addElement(new Pair().setName("favorite color").setValue("favColor"));
+		list.addElement(new Pair().setName("age").setValue("myAge"));
+		
+		list.printElements();
+		System.out.println();
+		
+		try
+		{
+			JAXBContext context = JAXBContext.newInstance(MyList.class);
+			Marshaller marshaller = context.createMarshaller();
+			
+			File file = new File("list.xml");
+			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+			
+			marshaller.marshal(list, file);
+			System.out.println("Marshalled to 'list.xml'");
+		}
+		catch (JAXBException e)
+		{
+			System.out.println(e);
+		}
+	}
+	
+	static void unmarshal()
+	{
+		try
+		{
+			JAXBContext context = JAXBContext.newInstance(MyList.class);
+			Unmarshaller unmarshaller = context.createUnmarshaller();
+			
+			File file = new File("list.xml");
+			
+			MyList list;
+			list = (MyList) unmarshaller.unmarshal(file);
+			System.out.println("Unmarshalled from 'list.xml'");
+			System.out.println("");
+			
+			list.printElements();
+		}
+		catch (JAXBException e)
+		{
+			System.out.println(e);
+		}
+	}
+}

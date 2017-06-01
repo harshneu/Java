@@ -1,0 +1,3 @@
+INDEX VERSION 1.129+C:\Users\hshukla\Desktop\trade-props\.metadata\.plugins\org.eclipse.jdt.core
+4114984744.index
+1800048179.index
